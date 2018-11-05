@@ -22,7 +22,6 @@ import junit.framework.TestSuite;
 	com.ntl.EVS.dao.impl.VoterDaoImplTest.class,
 	com.ntl.EVS.service.AdministratorImplTest.class,
 	com.ntl.EVS.service.ElectoralOfficerImplTest.class,
-	com.ntl.EVS.service.VoterImplTest.class,
 	com.ntl.EVS.util.AuthenticationTest.class,
 	com.ntl.EVS.util.UserTest.class
 })
@@ -34,6 +33,9 @@ public class AppTest
      *
      * @param testName name of the test case
      */
+	public AppTest() {
+		
+	}
     public AppTest( String testName )
     {
         super( testName );
