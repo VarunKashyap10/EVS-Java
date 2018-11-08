@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.sql.DataSource;
+
 import com.ntl.evs.bean.PartyBean;
 import com.ntl.evs.dao.PartyDAO;
 import com.utl.evs.util.DBUtil;
@@ -18,8 +20,13 @@ public class PartyDaoImpl implements PartyDAO {
 	public PartyDaoImpl(){
 		this.conn=DBUtil.getDBConnection();
 	}
-	public PartyDaoImpl(Connection c) {
-		this.conn=c;
+	public PartyDaoImpl(DataSource ds) {
+		try {
+			this.conn=ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public String createParty(PartyBean partyBean) {
 		try {

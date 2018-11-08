@@ -1,52 +1,0 @@
-
-Ncom.ntl.evs.bean.ElectionBean#generateID(Ljava/lang/String;)Ljava/lang/String;
-__unknown_file (name"1*ö
-1x
-nC:\Users\Training\Desktop\Practice\Java\FirstProject\EVS-Java\src\main\java\com\ntl\evs\bean\ElectionBean.java) )(œ
-Ã
-x
-nC:\Users\Training\Desktop\Practice\Java\FirstProject\EVS-Java\src\main\java\com\ntl\evs\bean\ElectionBean.java) )( 
-%0"0java.lang.String#substring(II)Ljava/lang/String;*
-
-name*
-""*
-""í
-è
-x
-nC:\Users\Training\Desktop\Practice\Java\FirstProject\EVS-Java\src\main\java\com\ntl\evs\bean\ElectionBean.java) )(!
-uid"__id*
-
-%0ïí
-x
-nC:\Users\Training\Desktop\Practice\Java\FirstProject\EVS-Java\src\main\java\com\ntl\evs\bean\ElectionBean.java* *(
-%1"java.util.Randomß
-§
-x
-nC:\Users\Training\Desktop\Practice\Java\FirstProject\EVS-Java\src\main\java\com\ntl\evs\bean\ElectionBean.java* *(
-%2"java.util.Random#<init>()V*
-
-%1ì
-ê
-x
-nC:\Users\Training\Desktop\Practice\Java\FirstProject\EVS-Java\src\main\java\com\ntl\evs\bean\ElectionBean.java* *(
-rand"__id*
-
-%1≥
-∞
-x
-nC:\Users\Training\Desktop\Practice\Java\FirstProject\EVS-Java\src\main\java\com\ntl\evs\bean\ElectionBean.java+ +(%
-%3"java.util.Random#nextInt(I)I*
-
-rand*
-""ü
-ú
-x
-nC:\Users\Training\Desktop\Practice\Java\FirstProject\EVS-Java\src\main\java\com\ntl\evs\bean\ElectionBean.java- -(
-uid"__concat*
-
-uid*
-"""É
-x
-nC:\Users\Training\Desktop\Practice\Java\FirstProject\EVS-Java\src\main\java\com\ntl\evs\bean\ElectionBean.java. .(
-
-uid

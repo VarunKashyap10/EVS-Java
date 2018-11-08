@@ -5,10 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
+
+import javax.sql.DataSource;
 
 import com.ntl.evs.bean.CandidateBean;
-import com.ntl.evs.bean.ElectionBean;
 import com.ntl.evs.dao.CandidateDAO;
 import com.utl.evs.util.DBUtil;
 
@@ -19,8 +19,13 @@ public class CandidateDaoImpl implements CandidateDAO {
 	public CandidateDaoImpl(){
 		conn=DBUtil.getDBConnection();
 	}
-	public CandidateDaoImpl(Connection con) {
-		this.conn=con;
+	public CandidateDaoImpl(DataSource ds) {
+		try {
+			this.conn=ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public String createCandidate(CandidateBean candidateBean) {
 		//conn=DBUtil.getDBConnection();
@@ -64,6 +69,7 @@ public class CandidateDaoImpl implements CandidateDAO {
 			//	public CandidateBean(String cid,String name, String eleId,String  partyId, String dist,String cons, Date dob,String mobile,String address,String email)
 			while(rs.next()) {
 				arr.add(new CandidateBean(rs.getString("candidateid"),rs.getString("name"),rs.getString("electionid"),rs.getString("partyid"),rs.getString("district"),rs.getString("constituency"),rs.getDate("dateofbirth"),rs.getString("mobileno"),rs.getString("address"),rs.getString("emailid")));
+				
 			}
 			return arr;
 		}catch(Exception err) {

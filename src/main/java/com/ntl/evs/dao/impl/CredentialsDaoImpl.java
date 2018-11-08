@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.sql.DataSource;
+
 import com.ntl.evs.bean.CredentialsBean;
 import com.ntl.evs.dao.CredentialsDAO;
 import com.utl.evs.util.DBUtil;
@@ -22,9 +24,14 @@ public class CredentialsDaoImpl implements CredentialsDAO {
 	}
 
 	
-	public CredentialsDaoImpl( Connection conn) {
+	public CredentialsDaoImpl(DataSource ds) {
 		super();
-		this.conn=conn;
+		try {
+			this.conn=ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public CredentialsBean findById(String userId) {
 		

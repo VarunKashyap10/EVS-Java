@@ -1,0 +1,14 @@
+com\ntl\EVS\dao\impl\ResultDaoImplTest.class
+com\ntl\EVS\service\ElectoralOfficerImplTest.class
+com\ntl\EVS\dao\impl\ApplicationDaoImplTest.class
+com\ntl\EVS\service\AdministratorImplTest.class
+com\ntl\EVS\dao\impl\VoterDaoImplTest.class
+com\ntl\EVS\util\UserTest.class
+com\ntl\EVS\dao\impl\CredentialsDaoImplTest.class
+com\ntl\EVS\service\VoterImplTest.class
+com\ntl\EVS\dao\impl\CandidateDaoImplTest.class
+com\ntl\EVS\util\AuthenticationTest.class
+com\ntl\EVS\AppTest.class
+com\ntl\EVS\dao\impl\ElectionDaoImplTest.class
+com\ntl\EVS\dao\impl\EoDaoImplTest.class
+com\ntl\EVS\dao\impl\PartyDaiImplTest.class

@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.sql.DataSource;
+
 import com.ntl.evs.bean.ElectionBean;
 import com.ntl.evs.dao.ElectionDAO;
 import com.utl.evs.util.DBUtil;
@@ -15,15 +17,20 @@ public class ElectionDaoImpl implements ElectionDAO {
 	Statement stmt;
 	ResultSet rs;
 	public ElectionDaoImpl() {
+		super();
 		conn=DBUtil.getDBConnection();
 	}
-	public ElectionDaoImpl(Connection c) {
-		this.conn=c;
+	public ElectionDaoImpl(DataSource ds) {
+		super();
+		try {
+			this.conn=ds.getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	public String createElection(ElectionBean electionBean) {
 		System.out.println("Create Election");
-		//conn=DBUtil.getDBConnection();
 		try {
 			stmt = conn.createStatement( );
 			int z = stmt.executeUpdate("insert into evs_tbl_election(electionid,name,electiondate,district,constituency,countingdate) values ('"+electionBean.getElectionID()+"','"+electionBean.getName()+"','"+electionBean.getElectionDate()+"','"+electionBean.getDistrict()+"','"+electionBean.getConstituency()+"','"+electionBean.getCountingDate()+"')");
@@ -39,7 +46,6 @@ public class ElectionDaoImpl implements ElectionDAO {
 		return "FAIL";
 	}
 	public int deleteElection(ArrayList<String> elections) {
-		//conn=DBUtil.getDBConnection();
 		
 		for(String elecId: elections) {
 		try {
@@ -57,7 +63,6 @@ public class ElectionDaoImpl implements ElectionDAO {
 		return false;
 	}
 	public ElectionBean findById(String electionId) {
-		//conn=DBUtil.getDBConnection();
 		ElectionBean elec=new ElectionBean();
 		try {
 			stmt = conn.createStatement( );
@@ -65,6 +70,10 @@ public class ElectionDaoImpl implements ElectionDAO {
 			if(rs.next()) {
 				elec = new ElectionBean(rs.getString("electionid"),rs.getString("name"),rs.getDate("electiondate"),rs.getString("district"),rs.getString("constituency"),rs.getDate("countingdate"));
 				System.out.println(elec.toString());
+				return elec;
+			}
+			else {
+				System.out.println("query not working");
 			}
 		}catch(Exception err) {
 			System.out.println(err);
@@ -72,7 +81,6 @@ public class ElectionDaoImpl implements ElectionDAO {
 		return null;
 	}
 	public ArrayList<ElectionBean> findAll(){
-		//conn=DBUtil.getDBConnection();
 		ArrayList<ElectionBean> arr=new ArrayList<ElectionBean>();
 		try {
 			stmt=conn.createStatement();

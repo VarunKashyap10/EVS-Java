@@ -5,11 +5,6 @@ import com.ntl.evs.bean.ApplicationBean;
 import com.ntl.evs.bean.CandidateBean;
 import com.ntl.evs.bean.ElectionBean;
 import com.ntl.evs.bean.PartyBean;
-import com.ntl.evs.dao.ApplicationDAO;
-import com.ntl.evs.dao.CandidateDAO;
-import com.ntl.evs.dao.CredentialsDAO;
-import com.ntl.evs.dao.ElectionDAO;
-import com.ntl.evs.dao.PartyDAO;
 import com.ntl.evs.dao.impl.ApplicationDaoImpl;
 import com.ntl.evs.dao.impl.CandidateDaoImpl;
 import com.ntl.evs.dao.impl.CredentialsDaoImpl;
@@ -17,14 +12,13 @@ import com.ntl.evs.dao.impl.ElectionDaoImpl;
 import com.ntl.evs.dao.impl.PartyDaoImpl;
 import com.ntl.evs.service.impl.AdministratorImpl;
 
-import static org.junit.Assert.assertEquals;
+
 import static org.mockito.Mockito.when;
 
 import java.sql.Date;
 import java.util.ArrayList;
 
 import org.junit.Test;
-import org.mockito.Mock;
 
 import static org.mockito.Mockito.mock;
 
@@ -85,7 +79,7 @@ public class AdministratorImplTest extends TestCase {
 	@Test
 	public void testAddParty() {
 		PartyBean p=new PartyBean();
-		when(par.createParty(p)).thenReturn("SUCCESS");
+		//when(par.createParty(p)).thenReturn("SUCCESS");
 		AdministratorImpl admin=new AdministratorImpl(elec,cand,appd,par);
 		assertEquals("Add Party Failed","SUCCESS",admin.addParty(p));
 		//fail("Not yet implemented");
@@ -95,9 +89,10 @@ public class AdministratorImplTest extends TestCase {
 		ArrayList<PartyBean> arr=new ArrayList<PartyBean>();
 		arr.add(new PartyBean());
 		arr.add(new PartyBean());
-		when(par.findAll()).thenReturn(arr);
+		//when(par.findAll()).thenReturn(arr);
 		AdministratorImpl admin=new AdministratorImpl(elec,cand,appd,par);
-		assertEquals("Add View All Party failed",arr,admin.viewAllParty());
+		//assertEquals("Add View All Party failed",arr,admin.viewAllParty());
+		fail("asd");
 	}
 
 	public void testAddCandidate() {
@@ -109,10 +104,10 @@ public class AdministratorImplTest extends TestCase {
 	}
 
 	public void testViewCandidateDetailsByElectionName() {
-		when(cand.findByElectionName("Varun")).thenReturn(cand.findByElectionName("Varun"));
+		//when(cand.findByElectionName("Varun")).thenReturn(cand.findByElectionName("Varun"));
 		AdministratorImpl admin = new AdministratorImpl(elec,cand,appd,par);
-		assertEquals("Failed to test ",cand.findByElectionName("Varun"),admin.viewCandidateDetailsByElectionName("Varun"));
-	//	fail("Not yet implemented");
+		//assertEquals("Failed to test ",cand.findByElectionName("Varun"),admin.viewCandidateDetailsByElectionName("Varun"));
+		fail("Not yet implemented");
 	}
 
 	public void testViewAllAdminPendingApplications() {

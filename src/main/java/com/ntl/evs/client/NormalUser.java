@@ -31,6 +31,7 @@ public class NormalUser {
 		boolean flag=true;
 		while(flag) {
 			showMessages();
+			System.out.println(loginUser.toString());
 			String str=sc.next();
 			sc.nextLine();
 			flag=evaluateOption(str);
@@ -126,6 +127,7 @@ public class NormalUser {
 			System.out.println("Create Election ID");
 		}
 	}
+	
 	public void createApplication() {
 		System.out.println("Creating an application to generate VoterID");
 		System.out.println("Enter Constituency");
@@ -137,6 +139,7 @@ public class NormalUser {
 		Voter v=new VoterImpl();
 		v.requestVoterId(app.getUserID());
 	}
+	
 	public void castVote() {
 		System.out.println("Cast your vote");
 		System.out.println("Upcoming elections include -- ");

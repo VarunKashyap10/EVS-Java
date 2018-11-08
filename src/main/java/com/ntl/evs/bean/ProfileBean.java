@@ -56,7 +56,7 @@ public class ProfileBean {
 		CredentialsDAO c=new CredentialsDaoImpl();
 		c.createCredentials(cred);
 	}
-	public ProfileBean(String uid,String fname, String lname,String gend,Date dob,String city,String location,String street,String state,String pin,String mobile,String email ){
+	public ProfileBean(String uid,String fname, String lname,String gend,Date dob,String city,String location,String street,String state,String pin,String mobile,String email,String pass ){
 		this.userID=uid;
 		this.firstName=fname;
 		this.lastName=lname;
@@ -69,7 +69,7 @@ public class ProfileBean {
 		this.pincode=pin;
 		this.mobileNo=mobile;
 		this.emailID=email;
-		this.password="";
+		this.password=pass;
 	}
 	
 	public String getState() {

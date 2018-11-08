@@ -17,7 +17,7 @@ public class CandidateBean {
 	public CandidateBean() {
 		
 	}
-	public CandidateBean(String name, String eleId,String  partyId, String dist,String cons, Date dob,String mobile,String address,String email) {
+	public CandidateBean(String name,String eleId,String partyId,String dist,String cons,Date dob,String mobile,String address,String email) {
 		this.candidateID=generateCandidateID(name);
 		this.name=name;
 		this.electionID=eleId;
@@ -29,7 +29,7 @@ public class CandidateBean {
 		this.address=address;
 		this.emailID=email;
 	}
-	public CandidateBean(String cid,String name, String eleId,String  partyId, String dist,String cons, Date dob,String mobile,String address,String email) {
+	public CandidateBean(String cid,String name,String eleId,String partyId,String dist,String cons,Date dob,String mobile,String address,String email) {
 		this.candidateID=cid;
 		this.name=name;
 		this.electionID=eleId;

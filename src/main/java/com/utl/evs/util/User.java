@@ -8,29 +8,29 @@ import com.ntl.evs.dao.impl.CredentialsDaoImpl;
 import com.ntl.evs.dao.impl.ProfileDaoImpl;
 
 public class User {
-	CredentialsDAO cred=new CredentialsDaoImpl();
+	CredentialsDAO cred;
+	Authentication a;
+	ProfileDAO pd;
+
+	public User() {
+		cred=new CredentialsDaoImpl();
+		a=new Authentication();
+		pd=new ProfileDaoImpl();
+
+	}
+	public User(CredentialsDaoImpl c,Authentication a, ProfileDaoImpl p) {
+		this.cred=c;
+		this.a=a;
+		this.pd=p;
+	}
 
 	//Main client=new Main();
 	public String login(CredentialsBean credentialsBean) {
 		System.out.println("Login");
 		try {
-			Authentication a=new Authentication();
 			System.out.println("a1");
 			if(a.authenticate(credentialsBean)) {
 				System.out.println("a2");
-
-/*				return "U";
-			}
-			else if(a.alreadyLoggedIn(credentialsBean)) {
-				
-				return "INVALID";
-			}
-			else if(a.isAdminUser(credentialsBean)) {
-				
-				return "A";
-			}
-			else {
-				return "FAIL";*/
 				String temp=a.autherize(credentialsBean.getUserID());
 				System.out.println("User tyoe returned -"+temp );
 				switch(temp) {
@@ -42,19 +42,9 @@ public class User {
 					return "U";
 				default:
 					return "FAIL";
-				/*credentialsDAO cred=new credentialsDaoImpl();
-				CredentialsBean user=cred.findById(credentialsBean.getUserID());
-				if(user.getLoginStatus()==1) {
-					System.out.println("Changing login status.");
-					a.changeLoginStatus(user, user.getLoginStatus());
-					return "INVALID";
-				}*/
-
-					
 				}
 			}
 			return "FAIL";
-			//return "FAIL";
 		}
 		catch(Exception err) {
 			System.out.println(err);
@@ -66,8 +56,7 @@ public class User {
 	public boolean logout(String userId) {
 		try {
 			CredentialsBean user=cred.findById(userId);
-			Authentication auth=new Authentication();
-			auth.changeLoginStatus(user, user.getLoginStatus());
+			a.changeLoginStatus(user, user.getLoginStatus());
 			return true;
 		}catch(Exception err) {
 			System.out.println(err);
@@ -88,7 +77,6 @@ public class User {
 	
 	public String resgister(ProfileBean profileBean) {
 		System.out.println(profileBean.toString());
-		ProfileDAO pd=new ProfileDaoImpl();
 		pd.createProfile(profileBean);
 		return null;
 	}

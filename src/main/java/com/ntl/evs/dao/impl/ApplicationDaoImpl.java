@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.sql.DataSource;
+
 import com.ntl.evs.bean.ApplicationBean;
-import com.ntl.evs.bean.ElectionBean;
-import com.ntl.evs.bean.PartyBean;
 import com.ntl.evs.dao.ApplicationDAO;
 import com.utl.evs.util.DBUtil;
 
@@ -19,8 +19,13 @@ public class ApplicationDaoImpl implements ApplicationDAO{
 	public ApplicationDaoImpl() {
 		conn=DBUtil.getDBConnection();
 	}
-	public ApplicationDaoImpl(Connection c) {
-		this.conn=c;
+	public ApplicationDaoImpl(DataSource ds) {
+		try {
+			this.conn=ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public String createApplication(ApplicationBean applicationBean) {
 		try {

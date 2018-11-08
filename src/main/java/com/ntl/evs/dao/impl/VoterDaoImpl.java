@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.sql.DataSource;
+
 import com.ntl.evs.dao.VoterDAO;
 import com.utl.evs.util.DBUtil;
 
@@ -12,6 +14,18 @@ public class VoterDaoImpl implements VoterDAO {
 	Connection conn;
 	Statement stmt;
 	ResultSet rs;
+	public VoterDaoImpl(){
+		
+	}
+	public VoterDaoImpl(DataSource ds) {
+		try {
+			this.conn=ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public String addVoter(String candidateid,String electionid,String voterid) {
 		conn=DBUtil.getDBConnection();
 		try {

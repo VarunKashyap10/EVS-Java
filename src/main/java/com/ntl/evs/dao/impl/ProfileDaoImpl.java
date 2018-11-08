@@ -6,7 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.ntl.evs.bean.ElectionBean;
+import javax.sql.DataSource;
+
 import com.ntl.evs.bean.ProfileBean;
 import com.ntl.evs.dao.ProfileDAO;
 import com.utl.evs.util.DBUtil;
@@ -20,8 +21,13 @@ public class ProfileDaoImpl implements ProfileDAO {
 		conn=DBUtil.getDBConnection();
 
 	}
-	public ProfileDaoImpl(Connection c) {
-		this.conn=c;
+	public ProfileDaoImpl(DataSource ds) {
+		try {
+			this.conn=ds.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public String createProfile(ProfileBean profileBean) {

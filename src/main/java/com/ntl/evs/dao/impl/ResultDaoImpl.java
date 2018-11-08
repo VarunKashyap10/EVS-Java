@@ -2,10 +2,19 @@ package com.ntl.evs.dao.impl;
 
 import java.util.ArrayList;
 
+import javax.sql.DataSource;
+
 import com.ntl.evs.bean.ResultBean;
 import com.ntl.evs.dao.ResultDAO;
 
 public class ResultDaoImpl implements ResultDAO {
+	
+	public ResultDaoImpl(){
+		
+	}
+	public ResultDaoImpl(DataSource ds){
+		
+	}
 
 	@Override
 	public String createResult(ResultBean resultBean) {

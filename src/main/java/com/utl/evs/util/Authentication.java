@@ -26,12 +26,13 @@ public class Authentication {
 		CredentialsBean test=cred.findById(user.getUserID()); 
 		System.out.println("a4");
 		if(test.getPassword().equals(user.getPassword())) {
-			if(test.getLoginStatus()==user.getLoginStatus()) {
+			if(test.getLoginStatus()==0) {
 				//return changeLoginStatus(user,user.getLoginStatus());
 				return true;
 			}
 			else {
 				System.out.println("User already logged in.!");
+				System.out.println("Logging him out");
 				return changeLoginStatus(user,user.getLoginStatus());
 			}
 		}
@@ -48,17 +49,19 @@ public class Authentication {
 		}
 	}
 	
-	String autherize(String userId) {
+	public String autherize(String userId) {
 		//credentialsDAO cred= new credentialsDaoImpl();
 		CredentialsBean test=cred.findById(userId);
-		System.out.println(test.toString());
+		test.setLoginStatus(1);
+		cred.updateCredentials(test);
+		//System.out.println(test.toString());
 		return test.getUserType();
 		//return null;
 	}
 	
-	boolean changeLoginStatus(CredentialsBean user, int loginStatus) {
+	public boolean changeLoginStatus(CredentialsBean user, int loginStatus) {
 		
-		user.setLoginStatus((loginStatus+1)%2);
+		user.setLoginStatus(0);
 		//System.out.println();
 		//credentialsDAO cred=new credentialsDaoImpl();
 		return cred.updateCredentials(user);
