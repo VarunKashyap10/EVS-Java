@@ -167,6 +167,7 @@ public class AdministratorImpl implements Administrator{
 		return null;
 		
 	}
+	
 	public ArrayList<ApplicationBean> viewAllAdminPendingApplications(){
 		//applicationDAO appd=new applicationDaoImpl();
 		ArrayList<ApplicationBean> appList=appd.findAll();
@@ -180,6 +181,7 @@ public class AdministratorImpl implements Administrator{
 		return appList;
 		
 	}
+
 	public boolean forwardVoterIDRequest(String userId) {
 		//applicationDAO appd=new applicationDaoImpl();
 		ApplicationBean app=appd.findById(userId);
@@ -189,22 +191,23 @@ public class AdministratorImpl implements Administrator{
 			return true;
 		}
 		return false;
-		
 	}
+	
 	public ArrayList<CandidateBean> viewCandidateDetailsByParty(String partyId){
 		//candidateDAO candid=new candidateDaoImpl();
 		ArrayList<CandidateBean> arr=cand.findAll();
-		int i=0;
-		for(CandidateBean c:arr) {
-			if(!c.getPartyID().equals(partyId)) {
-				arr.remove(i);
+		Iterator<CandidateBean> arrIterate=arr.iterator();
+		//int i=0;
+		while(arrIterate.hasNext()) {
+			if(arrIterate.next().getPartyID().equals(partyId)) {
+				arrIterate.remove();
 			}
-			i++;
 		}
 		return arr;
 		
 	}
 	public Map approveElectionResults(String electionId) {
+		
 		return null;
 		
 	}

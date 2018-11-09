@@ -11,5 +11,6 @@ public interface ResultDAO {
 	boolean updateResult(ResultBean resultBean);
 	ResultBean findById(String result);
 	ArrayList<ResultBean> findAll();
-	
+	ResultBean getVoteCount(String eleid,String candid);
+
 }

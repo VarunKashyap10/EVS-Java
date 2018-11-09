@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.ntl.evs.bean.ApplicationBean;
+import com.ntl.evs.bean.CredentialsBean;
 import com.ntl.evs.dao.impl.ApplicationDaoImpl;
 
 public class ApplicationDaoImplTest {
@@ -65,7 +66,8 @@ public class ApplicationDaoImplTest {
     @Test
     public void createApplicationTest() {
     	ApplicationDaoImpl c=new ApplicationDaoImpl(ds);
-    	//ApplicationBean ab=new ApplicationBean("VK9999","Delhi",1,0,"");
+    	ApplicationBean ab=new ApplicationBean("VK9999","Delhi",1,0,"");
     	assertEquals("SUCCESS",c.createApplication(app));
+    	assertEquals("FAIL",c.createApplication(ab));
     }
 }

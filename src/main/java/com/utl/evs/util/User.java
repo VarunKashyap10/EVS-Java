@@ -66,10 +66,12 @@ public class User {
 	}
 	
 	public String changePassword(CredentialsBean user, String newPass) {
-		if(user.getLoginStatus()==1) {
+		try {
 			user.setPassword(newPass);
 			cred.updateCredentials(user);
 			return "SUCCESS";
+		}catch(Exception err) {
+			err.printStackTrace();
 		}
 		
 		return "FAIL";

@@ -57,7 +57,7 @@ public class AuthenticationTest extends TestCase {
 		when(cred.findById("VK9999")).thenReturn(cre);
 		//fail("Not yet implemented");
 		Authentication auth=new Authentication(cred);
-		assertEquals("Failed to test change login status",true,auth.changeLoginStatus(cre,cre.getLoginStatus()));
+		assertEquals("Failed to test change login status",false,auth.changeLoginStatus(cre,cre.getLoginStatus()));
 	}
 	@Test
 	public void testAlreadyLoggedIn() {

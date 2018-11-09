@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.ntl.evs.bean.ApplicationBean;
 import com.ntl.evs.bean.CandidateBean;
 import com.ntl.evs.bean.CredentialsBean;
@@ -18,10 +20,11 @@ import com.utl.evs.util.User;
 
 public class AdminUser {
 	static CredentialsBean currentUser;
+	static Logger log=Logger.getLogger(AdminUser.class);
 	Scanner sc = new Scanner(System.in);
 	Administrator ad=new AdministratorImpl();
 	public AdminUser() {
-		
+
 	}
 	public AdminUser(CredentialsBean user){
 		currentUser=user;
@@ -41,6 +44,8 @@ public class AdminUser {
 		System.out.println("Thank You. Goodbye!");
 	}
 	boolean evaluateOptions(int x) {
+	log.info("This method called");
+		
 		switch(x) {
 		case 1:
 			return !logout();
@@ -258,7 +263,6 @@ public class AdminUser {
 			return false;
 		else 
 			return ad.forwardVoterIDRequest(arr.get(x-1).getUserID());
-		
 			//return true;
 		}catch(NullPointerException err) {
 			err.printStackTrace();

@@ -1,4 +1,4 @@
-package com.ntl.EVS.service;
+package com.ntl.EVS.service.impl;
 
 import junit.framework.TestCase;
 

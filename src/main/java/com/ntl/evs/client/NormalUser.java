@@ -132,8 +132,8 @@ public class NormalUser {
 		System.out.println("Creating an application to generate VoterID");
 		System.out.println("Enter Constituency");
 		String cons=sc.nextLine();
-		ApplicationBean app=new ApplicationBean(loginUser.getUserID(),cons,0,0);
-		//System.out.println(app.toString());
+		ApplicationBean app=new ApplicationBean(loginUser.getUserID(),cons,1,0);
+		System.out.println(app.toString());
 		ApplicationDAO appd=new ApplicationDaoImpl();
 		appd.createApplication(app);
 		Voter v=new VoterImpl();

@@ -17,7 +17,7 @@ public class ApplicationDaoImpl implements ApplicationDAO{
 	Statement stmt;
 	ResultSet rs;
 	public ApplicationDaoImpl() {
-		conn=DBUtil.getDBConnection();
+		this.conn=DBUtil.getDBConnection();
 	}
 	public ApplicationDaoImpl(DataSource ds) {
 		try {
@@ -27,19 +27,22 @@ public class ApplicationDaoImpl implements ApplicationDAO{
 			e.printStackTrace();
 		}
 	}
+	
 	public String createApplication(ApplicationBean applicationBean) {
 		try {
-			System.out.println("Executing Create");
+			//System.out.println("Executing Create");
 			stmt = conn.createStatement( );
 			int z = stmt.executeUpdate("insert into evs_tbl_application (userid,constituency,passedstatus,approvedstatus,voteid) values ('"+applicationBean.getUserID()+"','"+applicationBean.getConstituency()+"','"+applicationBean.getPassedStatus()+"','"+applicationBean.getApprovedStatus()+"','"+applicationBean.getVoterID()+"');");
-			System.out.println(z);
+			//System.out.println(z);
 			return "SUCCESS";
 			
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println(e);
 		}catch(Exception err) {
-			err.printStackTrace();
+			//err.printStackTrace();
+			System.out.println(err);
 		}
 
 		return "FAIL";
@@ -52,9 +55,8 @@ public class ApplicationDaoImpl implements ApplicationDAO{
 		System.out.println("Updating User"+applicationBean.toString());
 		try {
  			stmt=conn.createStatement();
-			System.out.println("Changing login status");
 			int z=stmt.executeUpdate("update evs_tbl_application set passedstatus = '"+applicationBean.getPassedStatus()+"' where userid = '"+applicationBean.getUserID()+"' ;");
-			System.out.println(z);
+			//System.out.println(z);
 			return true;
 		}
 		catch(Exception e) {
@@ -71,7 +73,7 @@ public class ApplicationDaoImpl implements ApplicationDAO{
 			rs = stmt.executeQuery("select * from evs_tbl_application where userid = '"+application+"' ;");
 			if(rs.next()) {
 				app = new ApplicationBean(rs.getString("userid"),rs.getString("constituency"),rs.getInt("passedstatus"),rs.getInt("approvedstatus"),rs.getString("voteid"));
-				System.out.println(app.toString());
+				//System.out.println(app.toString());
 			}
 			else {
 				

@@ -20,8 +20,8 @@ import junit.framework.TestSuite;
 	com.ntl.EVS.dao.impl.ElectionDaoImplTest.class,
 	com.ntl.EVS.dao.impl.PartyDaiImplTest.class,
 	com.ntl.EVS.dao.impl.VoterDaoImplTest.class,
-	com.ntl.EVS.service.AdministratorImplTest.class,
-	com.ntl.EVS.service.ElectoralOfficerImplTest.class,
+	com.ntl.EVS.service.impl.AdministratorImplTest.class,
+	com.ntl.EVS.service.impl.ElectoralOfficerImplTest.class,
 	com.ntl.EVS.util.AuthenticationTest.class,
 	com.ntl.EVS.util.UserTest.class
 })

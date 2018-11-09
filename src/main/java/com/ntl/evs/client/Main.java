@@ -4,21 +4,28 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.ntl.evs.bean.CredentialsBean;
 import com.ntl.evs.bean.ProfileBean;
 import com.utl.evs.util.User;
+
+import jdk.internal.jline.internal.Log;
 
 
 public class Main {
 	User user;
 	Scanner sc=new Scanner(System.in);
 	static Main client=new Main();
+	static Logger log=Logger.getLogger(Main.class);
 	User u=new User();
 	static CredentialsBean currentUser=new CredentialsBean();
 
 	public void InputProfile() {	
 		System.out.println("Enter First Name : ");
 		String uname=sc.nextLine();
+		if(uname.equals("`"))
+			return;
 		System.out.println("Enter Last Name : ");
 		String lname=sc.nextLine();
 		System.out.println("Enter Date Of Birth : (yyyy/mm/dd)");
@@ -52,6 +59,8 @@ public class Main {
 	
 	public static void main(String[] args) {
 			//Main client=new Main();
+		
+		log.info("Main Mrthod");
 		System.out.println("Welcome");
 		Scanner sc1=new Scanner(System.in);
 		boolean flag=true;
@@ -63,7 +72,7 @@ public class Main {
 		}
 		sc1.close();
 	}
-	
+
 	public boolean selectOption(String option) {
 		User u=new User();
 		NormalUser nu;

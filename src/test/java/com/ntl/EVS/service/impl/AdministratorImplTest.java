@@ -1,4 +1,4 @@
-package com.ntl.EVS.service;
+package com.ntl.EVS.service.impl;
 
 
 import com.ntl.evs.bean.ApplicationBean;
@@ -74,12 +74,12 @@ public class AdministratorImplTest extends TestCase {
 		when(elec.findAll()).thenReturn(arr);
 		AdministratorImpl admin=new AdministratorImpl(elec,cand,appd,par);
 		assertEquals("Failed to view  Upcoming elections",arr, admin.viewAllUpcomingElections());
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 	@Test
 	public void testAddParty() {
 		PartyBean p=new PartyBean();
-		//when(par.createParty(p)).thenReturn("SUCCESS");
+		when(par.createParty(p)).thenReturn("SUCCESS");
 		AdministratorImpl admin=new AdministratorImpl(elec,cand,appd,par);
 		assertEquals("Add Party Failed","SUCCESS",admin.addParty(p));
 		//fail("Not yet implemented");
@@ -87,12 +87,12 @@ public class AdministratorImplTest extends TestCase {
 
 	public void testViewAllParty() {
 		ArrayList<PartyBean> arr=new ArrayList<PartyBean>();
-		arr.add(new PartyBean());
-		arr.add(new PartyBean());
-		//when(par.findAll()).thenReturn(arr);
+		arr.add(new PartyBean("party1","PartyName","LeaderName","Symbol"));
+		arr.add(new PartyBean("party2","PartyName","LeaderName","Symbol"));
+		when(par.findAll()).thenReturn(arr);
 		AdministratorImpl admin=new AdministratorImpl(elec,cand,appd,par);
-		//assertEquals("Add View All Party failed",arr,admin.viewAllParty());
-		fail("asd");
+		assertEquals("Add View All Party failed",arr,admin.viewAllParty());
+		//fail("asd");
 	}
 
 	public void testAddCandidate() {
@@ -105,9 +105,14 @@ public class AdministratorImplTest extends TestCase {
 
 	public void testViewCandidateDetailsByElectionName() {
 		//when(cand.findByElectionName("Varun")).thenReturn(cand.findByElectionName("Varun"));
+	    CandidateBean can=new CandidateBean("candidate1","CandidateName","election1","party1","dist","cons",Date.valueOf("1997-03-30"),"9999999999","add","email");
+		ArrayList<CandidateBean> arr=new ArrayList<CandidateBean>();
+		arr.add(can);
+		when(cand.findByElectionName("Election1")).thenReturn(arr);
+		
 		AdministratorImpl admin = new AdministratorImpl(elec,cand,appd,par);
-		//assertEquals("Failed to test ",cand.findByElectionName("Varun"),admin.viewCandidateDetailsByElectionName("Varun"));
-		fail("Not yet implemented");
+		assertEquals("Failed to test ",arr,admin.viewCandidateDetailsByElectionName("Election1"));
+		//fail("Not yet implemented");
 	}
 
 	public void testViewAllAdminPendingApplications() {
@@ -122,11 +127,25 @@ public class AdministratorImplTest extends TestCase {
 	}
 
 	public void testForwardVoterIDRequest() {
-		fail("Not yet implemented");
+		ApplicationBean app=new ApplicationBean("VK9999","Delhi",1,0,"");
+		when(appd.findById("VK9999")).thenReturn(app);
+		AdministratorImpl admin = new AdministratorImpl(elec,cand,appd,par);
+		assertEquals(true,admin.forwardVoterIDRequest("VK9999"));
+		//fail("Not yet implemented");
 	}
 
 	public void testViewCandidateDetailsByParty() {
-		fail("Not yet implemented");
+		//cand.createCandidate(new CandidateBean())
+	    CandidateBean can=new CandidateBean("candidate1","CandidateName","election1","party1","dist","cons",Date.valueOf("1997-03-30"),"9999999999","add","email");
+		ArrayList<CandidateBean> arr=new ArrayList<CandidateBean>();
+		arr.add(can);
+		arr.add(new CandidateBean("candidate2","CandidateName","election1","party1","dist","cons",Date.valueOf("1997-03-30"),"9999999999","add","email"));
+		when(cand.findAll()).thenReturn(arr);
+		AdministratorImpl admin = new AdministratorImpl(elec,cand,appd,par);
+		ArrayList<CandidateBean> arr2=admin.viewCandidateDetailsByParty("party1");
+		assertEquals(arr,arr2);
+
+		//fail("Not yet implemented");
 	}
 
 	public void testApproveElectionResults() {

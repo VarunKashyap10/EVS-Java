@@ -34,17 +34,15 @@ public class ElectoralOfficerImpl implements ElectoralOfficer {
 			int randomSuffix = rand.nextInt(9000);
 			randomSuffix += 1000;
 			vid += randomSuffix;
-
-
 			ApplicationBean app=appd.findById(userId);
 			app.setPassedStatus(3);
 			app.setVoterID(vid);
 			app.setApprovedStatus(1);
 			appd.updateApplication(app);
 			return "SUCCESS";
-			
 		}catch(Exception err) {
-			err.printStackTrace();
+			//err.printStackTrace();
+			System.out.println(err);
 			return "ERROR";
 		}
 	}

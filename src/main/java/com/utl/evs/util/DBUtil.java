@@ -22,13 +22,13 @@ public class DBUtil {
 	
 	
 	public static Connection getDBConnection() {
-		System.out.println("GET Database connection");
+		//System.out.println("GET Database connection");
 
 		try {
 			   Class.forName(JDBC_DRIVER);
-			   System.out.println("Creating Database");
+			   //System.out.println("Creating Database");
 			   conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			   System.out.println(conn);
+			   //System.out.println(conn);
 			   
 			}
 			catch(SQLException s) {
@@ -36,7 +36,7 @@ public class DBUtil {
 			}
 			catch(ClassNotFoundException ex) {
 			   System.out.println("Error: unable to load driver class!"+ex);
-			   System.exit(1);
+			   //System.exit(1);
 			   ex.printStackTrace();
 			}
 		catch(Exception e) {

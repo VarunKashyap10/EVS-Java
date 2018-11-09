@@ -22,7 +22,7 @@ public class CredentialsDaoImplTest {
     Connection mockConn=mock(Connection.class);
     Statement mockCreateStmt=mock(Statement.class);
     ResultSet mockResultSet=mock(ResultSet.class);
-	CredentialsBean cr=new CredentialsBean("VK9999","qwerty1","A",0);
+	CredentialsBean cr=new CredentialsBean("VK9989","qwerty1","A",0);
     @Before
     public void setUp() throws SQLException {
     	when(ds.getConnection()).thenReturn(mockConn);
